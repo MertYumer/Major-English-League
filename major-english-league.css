@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #666666;
+}
+
+header{
+    background-color: darkblue;
+    color: #FFFFFF;
+    margin: 10px;
+    text-align: center;
+    font-size: 50px;
+}
+
+#leagueTable {
+    margin: 15px 15px 15px 70px;
+    width: 800px;
+    float: left;
+}
+
+table, th, td {
+    border: 2px solid #FFFFFF;
+    border-collapse: collapse;
+}
+
+td {
+    width: 50px;
+    text-align: center;
+}
+
+#leagueTable th {
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #FE642E;
+}
+
+#leagueTable th:nth-child(2) {
+    width: 200px;
+}
+
+#leagueTable tr:nth-child(-n+4) td {
+    color: #FFFFFF;
+    background-color: #0040FF;
+}
+
+#leagueTable tr:nth-child(5) td {
+    background-color: #FFBF00;
+}
+
+#leagueTable tr:nth-child(n+6) td {
+    background-color: #81DAF5;
+}
+
+#leagueTable tr:nth-last-child(-n+3) td {
+    color: #FFFFFF;
+    background-color: #FE2E2E;
+}
+
+#leagueTable tr td:nth-child(2) {
+    text-align: left;
+}
+
+#matchweek {
+    background: darkblue;
+    color: #FFFFFF;
+    width: 620px;
+    height: 310px;
+    margin: 120px 15px 15px;
+    float: left;
+}
+
+#matchweek th:nth-child(2) {
+    width: 15px;
+}
+
+button {
+    background: darkblue;
+    font-size: 20px;
+    text-align: center;
+    float: left;
+    display: inline-block;
+    padding: 5px;
+    margin: 15px;
+    border: 2px solid #FFFFFF;
+    border-radius: 25px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+#startBtn {
+    margin-left: 170px;
+}
+
+button:hover {
+    cursor: pointer;
+    outline: none;
+    background: #FFFFFF;
+    border: 2px solid darkblue;
+    color: darkblue;
+}
+
+button:disabled,
+button[disabled] {
+    border: 2px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: no-drop;
+}
