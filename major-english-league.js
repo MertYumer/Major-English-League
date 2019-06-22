@@ -43,9 +43,13 @@ function solve() {
     }
 
     function addFixturesToMatchweek() {
+        //counts the number of played matchweeks
+        nextMatchweekButton.value++;
+
         //sets startButton.value to 0, so it counts on which row is the current fixture
         startButton.value = 0;
         startButton.disabled = false;
+
         //disables nextMatchweekButton until all fixtures in current matchweek are not finished
         nextMatchweekButton.disabled = true;
 
@@ -64,6 +68,8 @@ function solve() {
     function startMatch() {
         //finds the current fixture's row
         const row = +startButton.value;
+
+        //counts the number of played fixtures in current matchweek
         startButton.value++;
 
         //disables the startButton if the last fixture from the current matchweek is played
@@ -111,8 +117,9 @@ function solve() {
                 updateStatsOfTeams(homeTeam, awayTeam, homeTeamGoals, awayTeamGoals);
                 updateTableStats();
 
-                //disables the startButton if the last fixture from the current matchweek is played
-                if (+startButton.value === 10) {
+                /*enables the nextMatchweekButton if the last fixture from the current
+                matchweek is played and there is at leaste one more matchweek*/
+                if (+startButton.value === 10 && +nextMatchweekButton.value < 38) {
                     nextMatchweekButton.disabled = false;
                 }
             }
