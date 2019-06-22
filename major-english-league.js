@@ -1,5 +1,5 @@
 function solve() {
-    //creates tournament in which every team plays with every other team home and away
+    //creates tournament in which each team plays every other team home and away
     function createFixtures() {
         for (let firstTeam = 0; firstTeam < teams.length; firstTeam++) {
             for (let secondTeam = firstTeam + 1; secondTeam < teams.length; secondTeam++) {

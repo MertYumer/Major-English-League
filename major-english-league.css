@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
-
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #666666;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('stadium-wallpaper.jpg');
+    background-size: 100% 110%;
+    background-repeat: no-repeat;
 }
 
 header{
-    background-color: darkblue;
+    background-color: transparent;
     color: #FFFFFF;
     margin: 10px;
     text-align: center;
