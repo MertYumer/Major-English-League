@@ -68,26 +68,52 @@ function solve() {
     function startMatch() {
         //adds goal to random player when the team scores a goal
         function addGoalToPlayerStats(team) {
-            const goalscorerIndex = Math.floor(Math.random() * 11) + 1;
-            const players = Object.keys(team.players);
-            let player;
+            const randomGoalscorerIndex = Math.floor(Math.random() * 11) + 1;
+            let playerName;
 
-            if (goalscorerIndex === 10 || goalscorerIndex === 11) {
-                player = players[10];
+            //checks if random index is 10 or 11(because the striker has bigger chance of scoring)
+            if (randomGoalscorerIndex === 10 || randomGoalscorerIndex === 11) {
+                playerName = team.players[10];
             } else {
-                player = players[goalscorerIndex];
+                playerName = team.players[randomGoalscorerIndex];
             }
 
-            team.players[player]++;
+            //checks if player's name is among the goalscorers
+            const playerIndex = goalScorers.findIndex(p => p.name === playerName);
+
+            if (playerIndex === -1) {
+                const player = {
+                    name: playerName,
+                    team: team.name,
+                    goals: 1
+                };
+
+                goalScorers.push(player);
+            } else {
+                goalScorers[playerIndex].goals++;
+            }
         }
 
         //adds clean sheet to the goalkeeper when the team keeps clean sheet
         function addCleanSheetToGoalkeeperStats(team) {
-            const players = Object.keys(team.players);
-            const player = players[0];
-            team.players[player]++;
+            const playerName = team.players[0];
+
+            //checks if player's name is among the goalkeepers
+            const playerIndex = goalKeepers.findIndex(p => p.name === playerName);
+
+            if (playerIndex === -1) {
+                const player = {
+                    name: playerName,
+                    team: team.name,
+                    cleanSheets: 1
+                };
+
+                goalKeepers.push(player);
+            } else {
+                goalKeepers[playerIndex].cleanSheets++;
+            }
         }
-        
+
         //finds the current fixture's row
         const row = +startButton.value;
 
@@ -152,13 +178,17 @@ function solve() {
                 updateStatsOfTeams(homeTeam, awayTeam, homeTeamGoals, awayTeamGoals);
                 updateLeagueTableStats();
 
+                //orders goalscorers by goals count and goalkeepers by clean sheets in descending order
+                goalScorers.sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name));
+                goalKeepers.sort((a, b) => b.cleanSheets - a.cleanSheets || a.name.localeCompare(b.name));
+
                 /*enables the nextMatchweekButton if the last fixture from the current
-                matchweek is played and there is at leaste one more matchweek*/
+                matchweek is played and there is at least one more matchweek*/
                 if (+startButton.value === 10 && +nextMatchweekButton.value < 38) {
                     nextMatchweekButton.disabled = false;
                 }
             }
-        }, 100);
+        }, 1);
     }
 
     function updateStatsOfTeams(homeTeam, awayTeam, homeTeamGoals, awayTeamGoals) {
@@ -228,50 +258,52 @@ function solve() {
     }
 
     let teams = [
-        new Team('Arsenal', {'Leno': 0, 'Bellerin': 0, 'Sokratis': 0, 'Koscielny': 0, 'Monreal': 0,
-            'Torreira': 0, 'Xhaka': 0, 'Ozil': 0, 'Mkhitaryan': 0, 'Aubameyang': 0, 'Lacazzette': 0}),
-        new Team('Aston Villa', {'Steer': 0, 'El Mohamady': 0, 'Tuanzebe': 0, 'Mings': 0, 'Taylor': 0,
-            'Hourihane': 0, 'Adomah': 0, 'McGinn': 0, 'Grealish': 0, 'El-Ghazi': 0, 'Abraham': 0}),
-        new Team('Bournemouth', {'Begovic': 0, 'Francis': 0, 'Ake': 0, 'S. Cook': 0, 'Rico': 0, 'Ibe': 0,
-            'Lerma': 0, 'L. Cook': 0, 'Stanislas': 0, 'Wilson': 0, 'King': 0}),
-        new Team('Brighton & Hove Albion', {'Ryan': 0, 'Montoya': 0, 'Duffy': 0, 'Dunk': 0, 'Bernardo': 0,
-            'Stephens': 0, 'Propper': 0, 'Jahanbakhsh': 0, 'Gross': 0, 'Izquierdo': 0, 'Andone': 0}),
-        new Team('Burnley', {'Heaton': 0, 'Lowton': 0, 'Tarkowski': 0, 'Mee': 0, 'Ward': 0, 'Gudmundsson': 0,
-            'Cork': 0, 'Defour': 0, 'Brady': 0, 'Hendrick': 0, 'Wood': 0}),
-        new Team('Chelsea', {'Kepa': 0, 'Azpilicueta': 0, 'Rudiger': 0, 'Luiz': 0, 'Alonso': 0, 'Jorginho': 0,
-            'Kovacic': 0, 'Kante': 0, 'William': 0, 'Hazard': 0, 'Morata': 0}),
-        new Team('Crystal Palace', {'Hennesey': 0, 'Wan Bissaka': 0, 'Tomkins': 0, 'Sakho': 0, 'var Aanholt': 0,
-            'Townsend': 0, 'Milivojevic': 0, 'Meyer': 0, 'Schlupp': 0, 'Benteke': 0, 'Zaha': 0}),
-        new Team('Everton', {'Pickford': 0, 'Coleman': 0, 'Zouma': 0, 'Mina': 0, 'Digne': 0, 'Gueye': 0,
-            'Gomes': 0, 'Walcott': 0, 'Sigurdsson': 0, 'Richarlison': 0, 'Tosun': 0}),
-        new Team('Leicester City', {'Schmeichel': 0, 'Maguire': 0, 'Evans': 0, 'Soyuncu': 0, 'Pereira': 0,
-            'Ndidi': 0, 'Iborra': 0, 'Chillwell': 0, 'Maddison': 0, 'Iheanacho': 0, 'Vardy': 0}),
-        new Team('Liverpool', {'Alisson': 0, 'Alexander-Arnold': 0, 'Lovren': 0, 'van Dijk': 0, 'Robertson': 0,
-            'Fabinho': 0, 'Henderson': 0, 'Wijnaldum': 0, 'Mane': 0, 'Firmino': 0, 'Salah': 0}),
-        new Team('Manchester City', {'Ederson': 0, 'Walker': 0, 'Stones': 0, 'Laporte': 0, 'Mendy': 0,
-            'Fernandinho': 0, 'de Bruyne': 0, 'Silva': 0, 'Mahrez': 0, 'Sterling': 0, 'Aguero': 0}),
-        new Team('Manchester United', {'De Gea': 0, 'Valencia': 0, 'Smalling': 0, 'Bailly': 0, 'Young': 0,
-            'Matic': 0, 'Fred': 0, 'Pogba': 0, 'Lingard': 0, 'Sanchez': 0, 'Lukaku': 0}),
-        new Team('Newcastle United', {'Dubravka': 0, 'Yedlin': 0, 'Schär': 0, 'Lascelles': 0, 'Dummett': 0,
-            'Ki Sung-yeung': 0, 'Shelvey': 0, 'Ritchie': 0, 'Perez': 0, 'Kenedy': 0, 'Rondon': 0}),
-        new Team('Norwich City', {'Krull': 0, 'Aarens': 0, 'Cimerman': 0, 'Godfrey': 0, 'Lewis': 0, 'McLean': 0,
-            'Vranchich': 0, 'Buendia': 0, 'Stiepermann': 0, 'Hernandez': 0, 'Puki': 0}),
-        new Team('Sheffield United', {'Henderson': 0, 'Boldlock': 0, 'Basham': 0, 'Ign': 0, 'O\'Conn': 0,
-            'Norud': 0, 'Flek': 0, 'Stevens': 0, 'Duffy': 0, 'Sharpe': 0, 'Makgoldrik': 0}),
-        new Team('Southampton', {'McGarthy': 0, 'Vestegaard': 0, 'Yoshida': 0, 'Hoedt': 0, 'Cedric': 0,
-            'Bertrand': 0, 'Romeu': 0, 'Lemina': 0, 'Ward-Powse': 0, 'Elyounoussi': 0, 'Austin': 0}),
-        new Team('Tottenham Hotspur', {'Lloris': 0, 'Trippier': 0, 'Alderweireld': 0, 'Verthongen': 0,
-            'Davies': 0, 'Dier': 0, 'Dembele': 0, 'Alli': 0, 'Eriksen': 0, 'Son': 0, 'Kane': 0}),
-        new Team('Watford', {'Foster': 0, 'Janmaat': 0, 'Cathcart': 0, 'Kabaseie': 0, 'Masina': 0,
-            'Doucoure': 0, 'Capoue': 0, 'Deulofeu': 0, 'Hughes': 0, 'Pereyra': 0, 'Gray': 0}),
-        new Team('West Ham United', {'Fabianski': 0, 'Fredericks': 0, 'Balbuena': 0, 'Ogbonna': 0,
-            'Cresswell': 0, 'Rice': 0, 'Noble': 0, 'Anderson': 0, 'Wilshere': 0, 'Arnautovic': 0, 'Chicharito': 0}),
-        new Team('Wolverhampton Wanderers', {'Patricio': 0, 'Dendoncker': 0, 'Coady': 0, 'Boly': 0, 'Doherty': 0,
-            'Jonny': 0, 'Neves': 0, 'Moutinho': 0, 'Traore': 0, 'Jota': 0, 'Jimenez': 0}),
+        new Team('Arsenal', ['Leno', 'Bellerin', 'Sokratis', 'Koscielny', 'Monreal',
+            'Torreira', 'Xhaka', 'Ozil', 'Mkhitaryan', 'Aubameyang', 'Lacazzette']),
+        new Team('Aston Villa', ['Steer', 'El Mohamady', 'Tuanzebe', 'Mings', 'Taylor',
+            'Hourihane', 'Adomah', 'McGinn', 'Grealish', 'El-Ghazi', 'Abraham']),
+        new Team('Bournemouth', ['Begovic', 'Francis', 'Ake', 'S. Cook', 'Rico', 'Ibe',
+            'Lerma', 'L. Cook', 'Stanislas', 'Wilson', 'King']),
+        new Team('Brighton & Hove Albion', ['Ryan', 'Montoya', 'Duffy', 'Dunk', 'Bernardo',
+            'Stephens', 'Propper', 'Jahanbakhsh', 'Gross', 'Izquierdo', 'Andone']),
+        new Team('Burnley', ['Heaton', 'Lowton', 'Tarkowski', 'Mee', 'Ward', 'Gudmundsson',
+            'Cork', 'Defour', 'Brady', 'Hendrick', 'Wood']),
+        new Team('Chelsea', ['Kepa', 'Azpilicueta', 'Rudiger', 'Luiz', 'Alonso', 'Jorginho',
+            'Kovacic', 'Kante', 'William', 'Hazard', 'Morata']),
+        new Team('Crystal Palace', ['Hennesey', 'Wan Bissaka', 'Tomkins', 'Sakho', 'var Aanholt',
+            'Townsend', 'Milivojevic', 'Meyer', 'Schlupp', 'Benteke', 'Zaha']),
+        new Team('Everton', ['Pickford', 'Coleman', 'Zouma', 'Mina', 'Digne', 'Gueye',
+            'Gomes', 'Walcott', 'Sigurdsson', 'Richarlison', 'Tosun']),
+        new Team('Leicester City', ['Schmeichel', 'Maguire', 'Evans', 'Soyuncu', 'Pereira',
+            'Ndidi', 'Iborra', 'Chillwell', 'Maddison', 'Iheanacho', 'Vardy']),
+        new Team('Liverpool', ['Alisson', 'Alexander-Arnold', 'Lovren', 'van Dijk', 'Robertson',
+            'Fabinho', 'Henderson', 'Wijnaldum', 'Mane', 'Firmino', 'Salah']),
+        new Team('Manchester City', ['Ederson', 'Walker', 'Stones', 'Laporte', 'Mendy',
+            'Fernandinho', 'de Bruyne', 'Silva', 'Mahrez', 'Sterling', 'Aguero']),
+        new Team('Manchester United', ['De Gea', 'Valencia', 'Smalling', 'Bailly', 'Young',
+            'Matic', 'Fred', 'Pogba', 'Lingard', 'Sanchez', 'Lukaku']),
+        new Team('Newcastle United', ['Dubravka', 'Yedlin', 'Schar', 'Lascelles', 'Dummett',
+            'Ki Sung-yeung', 'Shelvey', 'Ritchie', 'Perez', 'Kenedy', 'Rondon']),
+        new Team('Norwich City', ['Krull', 'Aarens', 'Cimerman', 'Godfrey', 'Lewis', 'McLean',
+            'Vranchich', 'Buendia', 'Stiepermann', 'Hernandez', 'Puki']),
+        new Team('Sheffield United', ['Henderson', 'Boldlock', 'Basham', 'Ign', 'O\'Conn',
+            'Norud', 'Flek', 'Stevens', 'Duffy', 'Sharpe', 'Makgoldrik']),
+        new Team('Southampton', ['McGarthy', 'Vestegaard', 'Yoshida', 'Hoedt', 'Cedric',
+            'Bertrand', 'Romeu', 'Lemina', 'Ward-Powse', 'Elyounoussi', 'Austin']),
+        new Team('Tottenham Hotspur', ['Lloris', 'Trippier', 'Alderweireld', 'Verthongen',
+            'Davies', 'Dier', 'Dembele', 'Alli', 'Eriksen', 'Son', 'Kane']),
+        new Team('Watford', ['Foster', 'Janmaat', 'Cathcart', 'Kabaseie', 'Masina',
+            'Doucoure', 'Capoue', 'Deulofeu', 'Hughes', 'Pereyra', 'Gray']),
+        new Team('West Ham United', ['Fabianski', 'Fredericks', 'Balbuena', 'Ogbonna',
+            'Cresswell', 'Rice', 'Noble', 'Anderson', 'Wilshere', 'Arnautovic', 'Chicharito']),
+        new Team('Wolverhampton Wanderers', ['Patricio', 'Dendoncker', 'Coady', 'Boly', 'Doherty',
+            'Jonny', 'Neves', 'Moutinho', 'Traore', 'Jota', 'Jimenez']),
     ];
 
     let fixtures = [];
     let matchweeks = [];
+    let goalScorers = [];
+    let goalKeepers = [];
 
     let leagueTable = document.querySelector('#leagueTable tbody').rows;
     let matchweekRows = document.querySelector('#matchweek tbody').rows;
