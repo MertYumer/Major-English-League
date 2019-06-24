@@ -8,19 +8,16 @@ body {
     background-image: url('stadium-wallpaper.jpg');
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
+    clear: both;
 }
 
 header{
     background-color: transparent;
     color: #FFFFFF;
-    margin: 0.2vw;
-    text-align: center;
-    font-size: 4vw;
-}
-
-#leagueTable {
-    margin: 0.5vw 0.5vw 0.5vw 3vw;
-    width: 50vw;
+    width: auto;
+    margin-left: 12vw;
+    text-align: left;
+    font-size: 3.9vw;
     float: left;
 }
 
@@ -32,6 +29,12 @@ table, th, td {
 td {
     width: 2vw;
     text-align: center;
+}
+
+#leagueTable {
+    margin: 0.5vw 0.5vw 0.5vw 3vw;
+    width: 50vw;
+    float: left;
 }
 
 #leagueTable th {
@@ -71,12 +74,41 @@ td {
     color: #FFFFFF;
     width: 40vw;
     height: 30vh;
-    margin: 0.5vw 0.5vw 0.5vw 2.5vw;
-    float: left;
+    margin: 0.5vw 3vw 0.5vw 0.5vw;
+    float: right;
 }
 
 #matchweek th:nth-child(2) {
     width: 6vw;
+}
+
+#goalscorers, #goalkeepers {
+    background: darkblue;
+    color: #FFFFFF;
+    width: 40vw;
+    height: 20vh;
+    margin: 0.1vw 3vw 0.5vw 0.5vw;
+    float: right;
+}
+
+#goalscorers th:nth-child(2) {
+    width: 5vw;
+}
+
+#goalscorers th:nth-child(3) {
+    width: 6vw;
+}
+
+#goalkeepers th:nth-child(2) {
+    width: 5vw;
+}
+
+#goalkeepers th:nth-child(3) {
+    width: 5vw;
+}
+
+#goalkeepers th:nth-child(4) {
+    width: 3vw;
 }
 
 button {
@@ -86,7 +118,7 @@ button {
     float: left;
     display: inline-block;
     padding: 0.2vw;
-    margin: 1vw;
+    margin: 0.3vw;
     border: 2px solid #FFFFFF;
     border-radius: 3vw;
     font-weight: bold;

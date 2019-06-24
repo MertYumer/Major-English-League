@@ -68,29 +68,29 @@ function solve() {
     function startMatch() {
         //adds goal to random player when the team scores a goal
         function addGoalToPlayerStats(team) {
-            const randomGoalscorerIndex = Math.floor(Math.random() * 11) + 1;
+            const randomGoalscorerIndex = Math.floor(Math.random() * 13) + 1;
             let playerName;
 
-            //checks if random index is 10 or 11(because the striker has bigger chance of scoring)
-            if (randomGoalscorerIndex === 10 || randomGoalscorerIndex === 11) {
+            //checks if random index is equal or bigger than 10(because the striker has bigger chance of scoring)
+            if (randomGoalscorerIndex >= 10) {
                 playerName = team.players[10];
             } else {
                 playerName = team.players[randomGoalscorerIndex];
             }
 
             //checks if player's name is among the goalscorers
-            const playerIndex = goalScorers.findIndex(p => p.name === playerName);
+            const playerIndex = goalscorers.findIndex(p => p.name === playerName);
 
             if (playerIndex === -1) {
-                const player = {
+                const goalscorer = {
                     name: playerName,
                     team: team.name,
                     goals: 1
                 };
 
-                goalScorers.push(player);
+                goalscorers.push(goalscorer);
             } else {
-                goalScorers[playerIndex].goals++;
+                goalscorers[playerIndex].goals++;
             }
         }
 
@@ -99,18 +99,18 @@ function solve() {
             const playerName = team.players[0];
 
             //checks if player's name is among the goalkeepers
-            const playerIndex = goalKeepers.findIndex(p => p.name === playerName);
+            const playerIndex = goalkeepers.findIndex(p => p.name === playerName);
 
             if (playerIndex === -1) {
-                const player = {
+                const goalkeeper = {
                     name: playerName,
                     team: team.name,
                     cleanSheets: 1
                 };
 
-                goalKeepers.push(player);
+                goalkeepers.push(goalkeeper);
             } else {
-                goalKeepers[playerIndex].cleanSheets++;
+                goalkeepers[playerIndex].cleanSheets++;
             }
         }
 
@@ -177,10 +177,8 @@ function solve() {
                 clearInterval(time);
                 updateStatsOfTeams(homeTeam, awayTeam, homeTeamGoals, awayTeamGoals);
                 updateLeagueTableStats();
-
-                //orders goalscorers by goals count and goalkeepers by clean sheets in descending order
-                goalScorers.sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name));
-                goalKeepers.sort((a, b) => b.cleanSheets - a.cleanSheets || a.name.localeCompare(b.name));
+                updateGoalscorersStats();
+                updateGoalkeepersStats();
 
                 /*enables the nextMatchweekButton if the last fixture from the current
                 matchweek is played and there is at least one more matchweek*/
@@ -188,7 +186,7 @@ function solve() {
                     nextMatchweekButton.disabled = false;
                 }
             }
-        }, 1);
+        }, 100);
     }
 
     function updateStatsOfTeams(homeTeam, awayTeam, homeTeamGoals, awayTeamGoals) {
@@ -222,7 +220,7 @@ function solve() {
     }
 
     function updateLeagueTableStats() {
-        /*sorts teams in table - first by points in descending,
+        /*orders teams in table - first by points in descending,
         then by goal difference in descending,
         then by most scored goals in descending,
         then by name in ascending*/
@@ -239,6 +237,30 @@ function solve() {
             for (let col = 1; col < leagueTable[row].cells.length; col++) {
                 leagueTable[row].cells[col].textContent = currentTeam[col - 1];
             }
+        }
+    }
+
+    function updateGoalscorersStats() {
+        //orders goalscorers by goals count in descending order
+        goalscorers.sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name));
+        const tableLength = Math.min(goalscorers.length, goalscorersRows.length);
+
+        for (let row = 0; row < tableLength; row++) {
+            goalscorersRows[row].cells[1].textContent = goalscorers[row].name;
+            goalscorersRows[row].cells[2].textContent = goalscorers[row].team;
+            goalscorersRows[row].cells[3].textContent = goalscorers[row].goals;
+        }
+    }
+
+    function updateGoalkeepersStats() {
+        //orders goalkeepers by clean sheets in descending order
+        goalkeepers.sort((a, b) => b.cleanSheets - a.cleanSheets || a.name.localeCompare(b.name));
+        const tableLength = Math.min(goalkeepers.length, goalkeepersRows.length);
+
+        for (let row = 0; row < tableLength; row++) {
+            goalkeepersRows[row].cells[1].textContent = goalkeepers[row].name;
+            goalkeepersRows[row].cells[2].textContent = goalkeepers[row].team;
+            goalkeepersRows[row].cells[3].textContent = goalkeepers[row].cleanSheets;
         }
     }
 
@@ -264,7 +286,7 @@ function solve() {
             'Hourihane', 'Adomah', 'McGinn', 'Grealish', 'El-Ghazi', 'Abraham']),
         new Team('Bournemouth', ['Begovic', 'Francis', 'Ake', 'S. Cook', 'Rico', 'Ibe',
             'Lerma', 'L. Cook', 'Stanislas', 'Wilson', 'King']),
-        new Team('Brighton & Hove Albion', ['Ryan', 'Montoya', 'Duffy', 'Dunk', 'Bernardo',
+        new Team('Brighton', ['Ryan', 'Montoya', 'Duffy', 'Dunk', 'Bernardo',
             'Stephens', 'Propper', 'Jahanbakhsh', 'Gross', 'Izquierdo', 'Andone']),
         new Team('Burnley', ['Heaton', 'Lowton', 'Tarkowski', 'Mee', 'Ward', 'Gudmundsson',
             'Cork', 'Defour', 'Brady', 'Hendrick', 'Wood']),
@@ -296,17 +318,19 @@ function solve() {
             'Doucoure', 'Capoue', 'Deulofeu', 'Hughes', 'Pereyra', 'Gray']),
         new Team('West Ham United', ['Fabianski', 'Fredericks', 'Balbuena', 'Ogbonna',
             'Cresswell', 'Rice', 'Noble', 'Anderson', 'Wilshere', 'Arnautovic', 'Chicharito']),
-        new Team('Wolverhampton Wanderers', ['Patricio', 'Dendoncker', 'Coady', 'Boly', 'Doherty',
+        new Team('Wolverhampton', ['Patricio', 'Dendoncker', 'Coady', 'Boly', 'Doherty',
             'Jonny', 'Neves', 'Moutinho', 'Traore', 'Jota', 'Jimenez']),
     ];
 
     let fixtures = [];
     let matchweeks = [];
-    let goalScorers = [];
-    let goalKeepers = [];
+    let goalscorers = [];
+    let goalkeepers = [];
 
     let leagueTable = document.querySelector('#leagueTable tbody').rows;
     let matchweekRows = document.querySelector('#matchweek tbody').rows;
+    let goalscorersRows = document.querySelector('#goalscorers tbody').rows;
+    let goalkeepersRows = document.querySelector('#goalkeepers tbody').rows;
 
     let startButton = document.getElementById('startBtn');
     startButton.addEventListener('click', startMatch);
