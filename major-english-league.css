@@ -96,7 +96,11 @@ td {
 }
 
 #goalscorers th:nth-child(3) {
-    width: 6vw;
+     width: 5vw;
+}
+
+#goalscorers th:nth-child(4) {
+    width: 3.4vw;
 }
 
 #goalkeepers th:nth-child(2) {

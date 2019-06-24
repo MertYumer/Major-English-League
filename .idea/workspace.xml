@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/major-english-league.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-636">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="578">
+              <caret line="102" column="14" selection-start-line="102" selection-start-column="14" selection-end-line="102" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -25,16 +25,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/major-english-league.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="328" column="33" selection-start-line="328" selection-start-column="33" selection-end-line="328" selection-end-column="33" />
+            <state relative-caret-position="1870">
+              <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
               <folding>
-                <element signature="n#table#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#thead#0;n#table#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#tr#1;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#tr#2;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#tr#3;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#tr#4;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#table#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#table#2;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#thead#0;n#table#2;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#tbody#0;n#table#2;n#body#0;n#html#0;n#!!top" />
@@ -60,20 +59,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/major-english-league.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-738">
-              <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+            <state relative-caret-position="-1860">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
-                <element signature="n#!!block;n#createFixtures#0;n#!!block;n#solve#0" />
-                <element signature="n#!!block;n#createMatchweeks#0;n#!!block;n#solve#0" />
-                <element signature="n#!!block;n#addFixturesToMatchweek#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#startMatch#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#addCleanSheetToGoalkeeperStats#0;n#!!block;n#startMatch#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#updateStatsOfTeams#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#updateLeagueTableStats#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#updateGoalscorersStats#0;n#!!block;n#solve#0" />
-                <element signature="n#!!block;n#updateGoalscorersStats#1;n#!!block;n#solve#0" />
+                <element signature="n#!!block;n#updateGoalkeepersStats#0;n#!!block;n#solve#0" />
                 <element signature="n#Team#0;n#!!block;n#solve#0" />
-                <element signature="e#9699#13073#0" />
+                <element signature="e#10662#14012#0" />
               </folding>
             </state>
           </provider>
@@ -104,6 +100,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,7 +112,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -158,11 +154,12 @@
       <workItem from="1561385087271" duration="79000" />
       <workItem from="1561392074175" duration="3842000" />
       <workItem from="1561399870619" duration="5658000" />
+      <workItem from="1561406654381" duration="6810000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22481000" />
+    <option name="totallyTimeSpent" value="29291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -191,18 +188,24 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/major-english-league.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="102" column="14" selection-start-line="102" selection-start-column="14" selection-end-line="102" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/major-english-league.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="328" column="33" selection-start-line="328" selection-start-column="33" selection-end-line="328" selection-end-column="33" />
+        <state relative-caret-position="1870">
+          <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
           <folding>
-            <element signature="n#table#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#thead#0;n#table#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#tr#1;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#tr#2;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#tr#3;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#tr#4;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#table#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#table#2;n#body#0;n#html#0;n#!!top" />
             <element signature="n#thead#0;n#table#2;n#body#0;n#html#0;n#!!top" />
             <element signature="n#tbody#0;n#table#2;n#body#0;n#html#0;n#!!top" />
@@ -224,29 +227,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/major-english-league.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-636">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/major-english-league.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-738">
-          <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+        <state relative-caret-position="-1860">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
-            <element signature="n#!!block;n#createFixtures#0;n#!!block;n#solve#0" />
-            <element signature="n#!!block;n#createMatchweeks#0;n#!!block;n#solve#0" />
-            <element signature="n#!!block;n#addFixturesToMatchweek#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#startMatch#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#addCleanSheetToGoalkeeperStats#0;n#!!block;n#startMatch#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#updateStatsOfTeams#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#updateLeagueTableStats#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#updateGoalscorersStats#0;n#!!block;n#solve#0" />
-            <element signature="n#!!block;n#updateGoalscorersStats#1;n#!!block;n#solve#0" />
+            <element signature="n#!!block;n#updateGoalkeepersStats#0;n#!!block;n#solve#0" />
             <element signature="n#Team#0;n#!!block;n#solve#0" />
-            <element signature="e#9699#13073#0" />
+            <element signature="e#10662#14012#0" />
           </folding>
         </state>
       </provider>

@@ -3,24 +3,42 @@ function solve() {
     function createFixtures() {
         for (let firstTeam = 0; firstTeam < teams.length; firstTeam++) {
             for (let secondTeam = firstTeam + 1; secondTeam < teams.length; secondTeam++) {
-                fixtures.push([teams[firstTeam], teams[secondTeam]]);
-                fixtures.push([teams[secondTeam], teams[firstTeam]]);
+                fixtures.push([teams[firstTeam], teams[secondTeam], 0]);
+                fixtures.push([teams[secondTeam], teams[firstTeam], 0]);
             }
         }
+
+        function shuffle(fixtures) {
+            let element = fixtures.length, temp, index;
+
+            // While there are elements in the array
+            while (element > 0) {
+                // Pick a random index
+                index = Math.floor(Math.random() * element);
+                // Decrease ctr by 1
+                element--;
+                // And swap the last element with it
+                temp = fixtures[element];
+                fixtures[element] = fixtures[index];
+                fixtures[index] = temp;
+            }
+
+            return fixtures;
+        }
+
+        shuffle(fixtures);
     }
 
     //creates all matchweeks and checks if some of the teams is repeated in a single matchweek
     function createMatchweeks() {
         //iterates through all matchweeks
-        for (let j = 0; j < 38; j++) {
-            matchweeks[j] = [];
+        for (let i = 0; i < 38; i++) {
+            matchweeks[i] = [];
             //adds all teams that play in current matchweek
             let addedTeams = [];
-            //adds the indexes of all fixtures in current matchweek
-            let fixturesIndexes = [];
 
             //every matchweek contains 10 fixtures
-            while (matchweeks[j].length < 10) {
+            while (matchweeks[i].length < 10) {
                 //chooses random index from the available fixtures
                 let randomIndex = Math.floor(Math.random() * fixtures.length);
 
@@ -30,15 +48,11 @@ function solve() {
 
                 //checks if some of the two teams is already in current matchweek
                 if (!addedTeams.includes(homeTeamName) && !addedTeams.includes(awayTeamName)) {
-                    matchweeks[j].push(fixtures[randomIndex]);
-                    fixturesIndexes.push(randomIndex);
+                    matchweeks[i].push(fixtures[randomIndex]);
                     addedTeams.push(homeTeamName);
                     addedTeams.push(awayTeamName);
                 }
             }
-
-            //removes all fixtures that were chosen in current matchweek
-            fixtures.filter(f => !fixturesIndexes.includes(fixtures.indexOf(f)));
         }
     }
 
@@ -146,15 +160,14 @@ function solve() {
             minutes++;
             timeRow.textContent = `${minutes}'`;
 
-            /*chooses random number and if it is 11, adds one goal to the home team,
-            else if it is 12 - adds one goal to the away team(this is temporary)*/
+            //chooses random number and if it is and adds one goal to one of the playing teams
             randomGoalNumber = Math.floor(Math.random() * 101);
 
-            if (randomGoalNumber === 11) {
+            if (randomGoalNumber === 9 || randomGoalNumber === 10 || randomGoalNumber === 11) {
                 homeTeamGoals++;
                 addGoalToPlayerStats(homeTeam);
 
-            } else if (randomGoalNumber === 12) {
+            } else if (randomGoalNumber === 12 || randomGoalNumber === 13 || randomGoalNumber === 14) {
                 awayTeamGoals++;
                 addGoalToPlayerStats(awayTeam);
             }
