@@ -3,8 +3,8 @@ function solve() {
     function createFixtures() {
         for (let firstTeam = 0; firstTeam < teams.length; firstTeam++) {
             for (let secondTeam = firstTeam + 1; secondTeam < teams.length; secondTeam++) {
-                fixtures.push([teams[firstTeam], teams[secondTeam], 0]);
-                fixtures.push([teams[secondTeam], teams[firstTeam], 0]);
+                fixtures.push([teams[firstTeam].name, teams[secondTeam].name]);
+                fixtures.push([teams[secondTeam].name, teams[firstTeam].name]);
             }
         }
 
@@ -34,7 +34,8 @@ function solve() {
         //iterates through all matchweeks
         for (let i = 0; i < 38; i++) {
             matchweeks[i] = [];
-            //adds all teams that play in current matchweek
+
+            //adds here all teams that play in current matchweek
             let addedTeams = [];
 
             //every matchweek contains 10 fixtures
@@ -42,13 +43,16 @@ function solve() {
                 //chooses random index from the available fixtures
                 let randomIndex = Math.floor(Math.random() * fixtures.length);
 
+                //finds current fixture
+                const fixture = fixtures[randomIndex];
+
                 //gets teams' names from current fixture
-                const homeTeamName = fixtures[randomIndex][0].name;
-                const awayTeamName = fixtures[randomIndex][1].name;
+                const homeTeamName = fixture[0];
+                const awayTeamName = fixture[1];
 
                 //checks if some of the two teams is already in current matchweek
                 if (!addedTeams.includes(homeTeamName) && !addedTeams.includes(awayTeamName)) {
-                    matchweeks[i].push(fixtures[randomIndex]);
+                    matchweeks[i].push(fixture);
                     addedTeams.push(homeTeamName);
                     addedTeams.push(awayTeamName);
                 }
@@ -73,9 +77,9 @@ function solve() {
         //iterates through all table rows and adds time, team names and result
         for (let row = 0; row < matchweekRows.length; row++) {
             matchweekRows[row].cells[0].textContent = '0\'';
-            matchweekRows[row].cells[1].textContent = matchweek[row][0].name;
+            matchweekRows[row].cells[1].textContent = matchweek[row][0];
             matchweekRows[row].cells[2].textContent = '0 - 0';
-            matchweekRows[row].cells[3].textContent = matchweek[row][1].name;
+            matchweekRows[row].cells[3].textContent = matchweek[row][1];
         }
     }
 
@@ -163,11 +167,11 @@ function solve() {
             //chooses random number and if it is and adds one goal to one of the playing teams
             randomGoalNumber = Math.floor(Math.random() * 101);
 
-            if (randomGoalNumber === 9 || randomGoalNumber === 10 || randomGoalNumber === 11) {
+            if (randomGoalNumber === 10 || randomGoalNumber === 11) {
                 homeTeamGoals++;
                 addGoalToPlayerStats(homeTeam);
 
-            } else if (randomGoalNumber === 12 || randomGoalNumber === 13 || randomGoalNumber === 14) {
+            } else if (randomGoalNumber === 12) {
                 awayTeamGoals++;
                 addGoalToPlayerStats(awayTeam);
             }

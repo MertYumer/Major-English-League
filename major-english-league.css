@@ -51,13 +51,9 @@ table tbody tr:nth-child(even) {
 
 table tbody tr:hover {
     background-color: darkred;
-    font-weight: bold;
-    box-shadow: #FFFFFF -0.1vw 0.1vw, #FFFFFF  -0.1vw 0.1vw;
-    transform: translate3d(0vw, -0.1vw, 0);
-
-    transition-delay: 0s;
+    box-shadow: #FFFFFF 0.15vw 0.15vw;
+    transform: translate3d(0, -0.1vw, 0);
     transition-duration: 0.2s;
-    transition-property: all;
 }
 
 #leagueTable {
