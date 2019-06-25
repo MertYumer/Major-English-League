@@ -11,13 +11,13 @@ function solve() {
         function shuffle(fixtures) {
             let element = fixtures.length, temp, index;
 
-            // While there are elements in the array
+            //While there are elements in the array
             while (element > 0) {
-                // Pick a random index
+                //Pick a random index
                 index = Math.floor(Math.random() * element);
-                // Decrease ctr by 1
+                // Decrease element by 1
                 element--;
-                // And swap the last element with it
+                //And swap the last element with it
                 temp = fixtures[element];
                 fixtures[element] = fixtures[index];
                 fixtures[index] = temp;
