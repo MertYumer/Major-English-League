@@ -6,7 +6,7 @@
     <script src="major-english-league.js"></script>
     <link rel="stylesheet" href="major-english-league.css">
 </head>
-<body>
+<body onload="solve()">
     <header>Major English League</header>
     <table id="matchweek">
         <thead>
@@ -424,10 +424,5 @@
     </table>
     <button id="startBtn" value="0">Start Match</button>
     <button id="nextBtn" value="0">Next Matchweek</button>
-    <script>
-        window.onload = function () {
-            solve();
-        }
-    </script>
 </body>
 </html>
