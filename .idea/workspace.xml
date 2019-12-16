@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/major-english-league.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="238">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/major-english-league.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="136">
+              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
               <folding>
                 <element signature="n#table#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#thead#0;n#table#0;n#body#0;n#html#0;n#!!top" />
@@ -60,13 +60,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/major-english-league.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="271" selection-start-line="271" selection-end-line="271" />
+            <state relative-caret-position="134">
+              <caret line="203" column="17" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
               <folding>
                 <element signature="n#!!block;n#createFixtures#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#createMatchweeks#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#addFixturesToMatchweek#0;n#!!block;n#solve#0" />
-                <element signature="n#!!block;n#startMatch#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#updateStatsOfTeams#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#updateLeagueTableStats#0;n#!!block;n#solve#0" />
                 <element signature="n#!!block;n#updateGoalscorersStats#0;n#!!block;n#solve#0" />
@@ -86,9 +85,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/major-english-league.js" />
         <option value="$PROJECT_DIR$/major-english-league.html" />
         <option value="$PROJECT_DIR$/major-english-league.css" />
+        <option value="$PROJECT_DIR$/major-english-league.js" />
       </list>
     </option>
   </component>
@@ -103,7 +102,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,6 +113,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -139,6 +138,16 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="major-english-league.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Major English League/major-english-league.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.major-english-league.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -167,11 +176,15 @@
       <workItem from="1562092776159" duration="2826000" />
       <workItem from="1562150672487" duration="603000" />
       <workItem from="1562171093756" duration="26000" />
+      <workItem from="1562236367752" duration="140000" />
+      <workItem from="1562591967644" duration="1266000" />
+      <workItem from="1562673367851" duration="56000" />
+      <workItem from="1576502805089" duration="126000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46371000" />
+    <option name="totallyTimeSpent" value="47959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -202,13 +215,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/major-english-league.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="271" selection-start-line="271" selection-end-line="271" />
+        <state relative-caret-position="134">
+          <caret line="203" column="17" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
           <folding>
             <element signature="n#!!block;n#createFixtures#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#createMatchweeks#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#addFixturesToMatchweek#0;n#!!block;n#solve#0" />
-            <element signature="n#!!block;n#startMatch#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#updateStatsOfTeams#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#updateLeagueTableStats#0;n#!!block;n#solve#0" />
             <element signature="n#!!block;n#updateGoalscorersStats#0;n#!!block;n#solve#0" />
@@ -221,8 +233,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/major-english-league.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="136">
+          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
           <folding>
             <element signature="n#table#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#thead#0;n#table#0;n#body#0;n#html#0;n#!!top" />
@@ -254,8 +266,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/major-english-league.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="238">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
